@@ -47,4 +47,16 @@ task({ :sample_data => :environment }) do
     end
   end
   p "There are now #{FollowRequest.count} follow requests."
+
+  # ==== Photo ====
+  users.each do |user|
+    rand(25).times do
+      photo = user.own_photos.create(
+        caption: Faker::Quote.jack_handey,
+        image: "https://robohash.org/#{rand(9999)}"
+      )
+
+      
+    end
+  do
 end
