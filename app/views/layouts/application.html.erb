@@ -8,9 +8,14 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <%= render partial: "shared/cdn_assets" %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render partial: "shared/navbar" %>
+    <div class="mx-auto p-2" style="width: 40%">
+      <%= render partial: "shared/flash_messages" %>
+      <%= yield %>
+    </div>
   </body>
 </html>

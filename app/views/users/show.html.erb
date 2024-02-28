@@ -1,0 +1,37 @@
+<div class="container text-center ">
+  <div class="row">
+    <div class="col">
+      avatar
+    </div>
+    <div class="col">
+      <h1><%= current_user.username %></h1>
+    </div>
+  </div>
+</div>
+
+<nav>
+  <div class="nav nav-tabs nav-fill mb-3" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-posts-tab" data-bs-toggle="tab" data-bs-target="#nav-posts" type="button" role="tab" aria-controls="nav-posts" aria-selected="true">Posts <%= @user.own_photos.count %></button>
+    <button class="nav-link" id="nav-liked-tab" data-bs-toggle="tab" data-bs-target="#nav-liked" type="button" role="tab" aria-controls="nav-liked" aria-selected="false">Liked</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab" tabindex="0">
+    <!--POST-->
+    <% @user.own_photos.each do |post| %>
+    <div class="card" style="width: 18rem;">
+    <div class="card-title">
+    <%= current_user.username %>
+    </div>
+      <img src="<%= post.image %>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p class="card-text"><%= post.caption %></p>
+      </div>
+    </div>
+    <!--END POSTS-->
+    <% end %>
+  </div>
+  <div class="tab-pane fade" id="nav-liked" role="tabpanel" aria-labelledby="nav-liked-tab" tabindex="0">
+
+  </div>
+</div>
