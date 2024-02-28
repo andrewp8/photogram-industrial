@@ -13,10 +13,10 @@ task({ :sample_data => :environment }) do
   12.times do
     name = Faker::Name.first_name
     u = User.create(
-      email: "#{name}#example.com",
+      email: "#{name}@example.com",
       password: "password",
       username: name,
-      private: [true, false].sample,
+      private: [true, false].sample
     )
 
     p u.errors.full_messages
