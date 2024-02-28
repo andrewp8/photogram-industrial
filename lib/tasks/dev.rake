@@ -19,7 +19,7 @@ task({ :sample_data => :environment }) do
       private: [true, false].sample
     )
 
-    p u.errors.full_messages
+    # p u.errors.full_messages
   end
 
   p "There are now #{User.count} users."
