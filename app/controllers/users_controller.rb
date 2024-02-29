@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  def show
+  def profile
     @user = User.find(current_user.id)
   end
   def feed

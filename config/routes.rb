@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   
-  # get '/:username', to: 'users#show', as: 'user_profile'
+  get '/:username', to: 'users#profile', as: 'user_profile'
 end
