@@ -1,37 +1,41 @@
-<div class="container text-center ">
+<div class="container"><!--container div-->
   <div class="row">
-    <div class="col">
-      avatar
+    <div class="col-4">
+      <img src="https://photogram-industrial.matchthetarget.com/9.jpeg" alt="" class="mr-3 round-circle" width="128">
     </div>
-    <div class="col">
-      <h1><%= current_user.username %></h1>
-    </div>
-  </div>
-</div>
-
-<nav>
-  <div class="nav nav-tabs nav-fill mb-3" id="nav-tab" role="tablist">
-    <button class="nav-link active" id="nav-posts-tab" data-bs-toggle="tab" data-bs-target="#nav-posts" type="button" role="tab" aria-controls="nav-posts" aria-selected="true">Posts <%= @user.own_photos.count %></button>
-    <button class="nav-link" id="nav-liked-tab" data-bs-toggle="tab" data-bs-target="#nav-liked" type="button" role="tab" aria-controls="nav-liked" aria-selected="false">Liked</button>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-posts" role="tabpanel" aria-labelledby="nav-posts-tab" tabindex="0">
-    <!--POST-->
-    <% @user.own_photos.each do |post| %>
-    <div class="card" style="width: 18rem;">
-    <div class="card-title">
-    <%= current_user.username %>
-    </div>
-      <img src="<%= post.image %>" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text"><%= post.caption %></p>
+    <div class="col-8">
+      <div class="container">
+        <div class="row">
+          <div class="col">NAME</div>
+          <div class="col">STATUS</div>
+        </div>
+        <div class="row">
+          <div class="col">followers</div>
+          <div class="col">following</div>
+          <div class="col">pending</div>
+        </div>
+        <div class="row">
+          <button class="btn btn-outline-secondary">Un-Follow</button>
+        </div>
+        <div class="row">
+          <p class="h4">Full Name</p>
+          <p>Bio</p>
+          <a href="#">Link bio</a>
+        </div>
       </div>
     </div>
-    <!--END POSTS-->
-    <% end %>
-  </div>
-  <div class="tab-pane fade" id="nav-liked" role="tabpanel" aria-labelledby="nav-liked-tab" tabindex="0">
-
   </div>
 </div>
+<!--container end-->
+
+<ul class="nav nav-tabs nav-fill">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Posts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Liked</a>
+  </li>
+</ul>
+<% @user.own_photos.each do |post| %>
+  <%= render partial "shared/card" locals: {post: post } %>
+<% end %>
