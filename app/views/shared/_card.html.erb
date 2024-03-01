@@ -1,5 +1,5 @@
 <%#= render partial: "shared/feed_card_comment" %>
-<div class="card">
+<div class="card m-4">
   <div class="card-body py-3 d-flex align-items-center justify-content-between">
     <h2 class="h5 m-0 p-0 d-flex align-items-center">
       <img class="rounded-circle mr-2" width="36" src="https://robohash.org/6364">
@@ -25,5 +25,8 @@
     <% post.comments.each do |comment| %>
       <%= render partial: "shared/card_comment", locals: {comment: comment} %>
     <% end %>
+  </div>
+  <div class="card-body">
+    <%= render partial: "shared/card_comment_form", locals: {post: post} %>
   </div>
 </div>
