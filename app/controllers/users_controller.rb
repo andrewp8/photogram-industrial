@@ -9,4 +9,7 @@ class UsersController < ApplicationController
     @feed = User.find(current_user.id).feed
     render "users/feed"
   end
+  def test
+
+  end
 end
