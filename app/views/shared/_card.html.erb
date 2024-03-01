@@ -6,17 +6,24 @@
       <%poster = User.find(post.owner_id)  %>
       <%= link_to poster.username, user_profile_path(poster.username), class: "test-dark"%>
     </h2>
-    <div class="m-0 p-0 d-flex align-items-center">
-      <%= link_to edit_photo_path(post.id), class:"test-dark" do %>
-        <i class="fa-solid fa-pen-to-square btn btn-link btn-sm text-muted text-secondary"></i>
-      <% end %>
-      <%= link_to photo_path(post.id), data: {turbo_method: :delete } do %>
-        <i class="fa-solid fa-trash m-2 text-secondary btn btn-link btn-sm text-muted"></i>
-      <% end %>
-    </div>
+    <% if current_user.id == post.owner_id %>
+      <div class="m-0 p-0 d-flex align-items-center">
+        <%= link_to edit_photo_path(post.id), class:"test-dark" do %>
+          <i class="fa-solid fa-pen-to-square btn btn-link btn-sm text-muted text-secondary"></i>
+        <% end %>
+        <%= link_to photo_path(post.id), data: {turbo_method: :delete } do %>
+          <i class="fa-solid fa-trash m-2 text-secondary btn btn-link btn-sm text-muted"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <img src="<%= post.image %>" class="card-img-top" alt="...">
   <div class="card-body">
     <p class="card-text"><%= post.caption %></p>
+  </div>
+  <div class="card-body">
+    <% post.comments.each do |comment| %>
+      <%= render partial: "shared/card_comment", locals: {comment: comment} %>
+    <% end %>
   </div>
 </div>
