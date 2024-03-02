@@ -1,4 +1,37 @@
-<div class="container"><!--container div-->
+<% @user.own_photos.each do |photo| %>
+  <div class="row mb-4">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <%= image_tag photo.image, class: "card-img-top" %>
+        <div class="card-body">
+          <h5 class="card-title"><%= photo.owner.username %></h5>
+          <p class="card-text"><%= photo.caption %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% photo.comments.each do |comment| %>
+            <li class="list-group-item">
+              <div class="d-flex">
+                <div class="flex-shrink-0">
+                  <img src="..." alt="...">
+                </div>
+                <div class="flex-grow-1 ms-3">
+                  <h5 class="mt-0"><%= comment.author.username %></h5>
+                  <p><%= comment.body %></p>
+                </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+        <div class="card-body">
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<!--<div class="container">
   <div class="row">
     <div class="col-4">
       <img src="https://photogram-industrial.matchthetarget.com/9.jpeg" alt="avatar" class="mr-3 round-circle" width="128">
@@ -6,17 +39,20 @@
     <div class="col-8">
       <div class="container">
         <div class="row">
-          <div class="col"><h1 class="fs-1 text"><%= @user.username %>
-          </h1></div>
-          <div class="col"><% if !@user.private %>
-            <div class="btn btn-secondary btn-sm">Public</div>
-          <% else %>
-            <div class="btn btn-secondary btn-sm">Private</div>
-          <% end %></div>
+          <div class="col">
+            <h1 class="fs-1 text"><%#= @user.username %>
+            </h1>
+          </div>
+          <div class="col"><%# if !@user.private %>
+              <div class="btn btn-secondary btn-sm">Public</div>
+            <%# else %>-->
+<!--              <div class="btn btn-secondary btn-sm">Private</div>-->
+<%# end %>
+<!--          </div>
         </div>
         <div class="row">
-          <div class="col"><%= @user.followers.count %> followers</div>
-          <div class="col"><%= @user.followers.count %> following</div>
+          <div class="col"><%#= @user.followers.count %> followers</div>
+          <div class="col"><%#= @user.followers.count %> following</div>
           <div class="col">pending</div>
         </div>
         <div class="row">
@@ -34,13 +70,13 @@
 
 <ul class="nav nav-tabs nav-fill">
   <li class="nav-item">
-    <!--<a class="nav-link active" aria-current="page" href="/<%#= user_profile_path %>">Posts</a>-->
-    <%= link_to "Posts", user_path(@user.username), class: "nav-link active"%>
-  </li>
+    <%#= link_to "Posts", user_path(@user.username), class: "nav-link active"%>-->
+<!--  </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Liked</a>
   </li>
 </ul>
-<% @user.own_photos.each do |post| %>
-  <%= render partial: "shared/card", locals: {post: post} %>
-<% end %>
+<%# @user.own_photos.each do |photo| %>-->
+<%#= render partial: "shared/card", locals: {photo: photo} %>
+<%# end %>
+<!---->
