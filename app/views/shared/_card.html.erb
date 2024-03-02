@@ -4,7 +4,7 @@
     <h2 class="h5 m-0 p-0 d-flex align-items-center">
       <img class="rounded-circle mr-2" width="36" src="https://robohash.org/6364">
       <%poster = User.find(post.owner_id)  %>
-      <%= link_to poster.username, user_profile_path(poster.username), class: "test-dark"%>
+      <%= link_to poster.username, user_path(poster.username), class: "test-dark"%>
     </h2>
     <% if current_user.id == post.owner_id %>
       <div class="m-0 p-0 d-flex align-items-center">

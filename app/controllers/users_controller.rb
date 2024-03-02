@@ -1,15 +1,12 @@
 class UsersController < ApplicationController
-  def profile
+  def show
     username = params.fetch("username")
 
-    @user = User.where(username:username).first
-    render "/users/profile"
+    @user = User.find_by!(username:username)
   end
   def feed
     @feed = User.find(current_user.id).feed
     render "users/feed"
   end
-  def test
 
-  end
 end
