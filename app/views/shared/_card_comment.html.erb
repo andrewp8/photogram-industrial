@@ -10,7 +10,7 @@
           <div class="d-flex align-items-center justify-content-between">
             <h2 class="h5 m-0 p-0 d-flex align-items-center">
               <%poster = User.find(comment.author_id)  %>
-              <%= link_to poster.username, user_profile_path(poster.username), class: "test-dark"%>
+              <%= link_to poster.username, user_path(poster.username), class: "test-dark"%>
             </h2>
             <% if current_user.id == comment.author_id %>
               <div class="m-0 p-0 d-flex align-items-center">
