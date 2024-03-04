@@ -15,15 +15,15 @@
         <%= link_to "Feed", feed_path(@user.username), class: "nav-link" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Followers", followers_path(@user.username), class: "nav-link" %>
+        <a class="nav-link" href="#">Followers</a>
       </li>
       <li class="nav-item">
-        <%= link_to "Following", following_path(@user.username), class: "nav-link" %>
+        <a class="nav-link" href="#">Following</a>
       </li>
     </ul>
   </div>
 </div>
 
-<% @user.own_photos.each do |photo| %>
+<% @user.liked_photos.each do |photo| %>
   <%= render "photos/photo", photo: photo %>
 <% end %>

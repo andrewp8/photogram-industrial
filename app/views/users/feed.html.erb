@@ -1,6 +1,5 @@
 <h1>feed</h1>
-<p class="text-secondary mb-5">posts by people you know</p>
-<% @feed.each do |post| %>
-  <%= render partial: "shared/card", locals: {post: post} %>
-  <%#= post %>
+<p class="text-secondary mb-5">posts by people you follow</p>
+<% @user.feed.each do |photo| %>
+  <%= render "photos/photo", photo: photo %>
 <% end %>
